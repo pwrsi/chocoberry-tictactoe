@@ -3,17 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Chocolate & Strawberry Tic-Tac-Toe</title>
+
+  <link rel="stylesheet" href="tempstyle.css">
 </head>
 <body>
   
-  <div class="container">
+  <div class="outside-container">
+    <div class="container">
 
-    <h1>chocolate & strawberry tic-tac-toe</h1>
-
-    <div class="tictactoe"></div>
-
+      <h1><span class="chocolate">chocolate</span> & <span class="strawberry">strawberry</span> <br> Tic-Tac-Toe</h1>
+  
+      <div class="start">
+        <div class="buttons">
+          <button id="computer">Play with a computer</button>
+          <button id="friend">Play with a friend</button>
+        </div>
+  
+        <div class="note">
+          Note: The Play with a Friend option is intended for local play only. Players take turns on the same device.
+        </div>
+      </div>
+  
+      <div class="pick-move-computer hide">
+        <h1>Chocolate or Strawberry?</h1>
+        <div class="buttons">
+          <button id="chocolate-move">Chocolate</button>
+          <button id="strawberry-move">Strawberry</button>
+        </div>
+      </div>
+  
+      <div class="tictactoe-container hide">
+        <button id="exit"><</button>
+  
+        <div class="tictactoe">
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+        </div>
+      </div>
+  
+      <a href="https://github.com/pwrsi" class="link">made by pwrsi 𐙚</a>
+    </div>
   </div>
 
+  <script src="script.js"></script>
 </body>
 </html>
