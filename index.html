@@ -14,10 +14,10 @@
 
       <h1><span class="chocolate">chocolate</span> & <span class="strawberry">strawberry</span> <br> Tic-Tac-Toe</h1>
   
-      <div class="start">
+      <div id="start" class="start">
         <div class="buttons">
-          <button id="computer">Play with a computer</button>
-          <button id="friend">Play with a friend</button>
+          <button id="computer-play">Play with a computer</button>
+          <button id="friend-play">Play with a friend</button>
         </div>
   
         <div class="note">
@@ -25,7 +25,7 @@
         </div>
       </div>
   
-      <div class="pick-move-computer hide">
+      <div id="choose-turn" class="pick-move-computer hide">
         <h1>Chocolate or Strawberry?</h1>
         <div class="buttons">
           <button id="chocolate-move">Chocolate</button>
@@ -33,11 +33,17 @@
         </div>
       </div>
   
-      <div class="tictactoe-container hide">
-        <button id="exit"><</button>
+      <div id="tictactoe" class="tictactoe-container hide">
+        
+        <div class="top">
+          <button id="exit"><</button>
+          <p class="turn-indicator">
+            <span class="turn"></span> turn.
+          </p>
+        </div>
   
         <div class="tictactoe">
-          <div class="cell"></div>
+          <div class="cell">x</div>
           <div class="cell"></div>
           <div class="cell"></div>
           <div class="cell"></div>
