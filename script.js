@@ -3,10 +3,10 @@ const friendMode = document.getElementById('friend-play');
 
 // html elements
 const startDiv = document.getElementById('start');
-const chooseTurnDiv = document.getElementById('choose-turn');
+const chooseMoveDiv = document.getElementById('choose-move');
 const tictactoeDiv = document.getElementById('tictactoe');
 
-// pick turn (computer mode only)
+// pick Move (computer mode only)
 const chocolate = document.getElementById('chocolate-move');
 const strawberry = document.getElementById('strawberry-move');
 
@@ -19,16 +19,16 @@ backButton.addEventListener('click', () => {
 });
 
 computerMode.addEventListener('click', () => {
-  showTurnOptions();
+  showMoveOptions();
 });
 
 friendMode.addEventListener('click', () => {
   playFriendMode();
 });
 
-function showTurnOptions() {
+function showMoveOptions() {
   startDiv.classList.add('hide');
-  chooseTurnDiv.classList.remove('hide');
+  chooseMoveDiv.classList.remove('hide');
 }
 
 chocolate.addEventListener('click', () => {
@@ -40,7 +40,25 @@ strawberry.addEventListener('click', () => {
 });
 
 // computer mode
-function playComputerMode(turn) {
-  chooseTurnDiv.classList.add('hide');
+function playComputerMode(move) {
+  chooseMoveDiv.classList.add('hide');
   tictactoeDiv.classList.remove('hide');
+
+  let computerMove = '';
+  let playerMove = '';
+
+  if (move === 'chocolate') {
+    playerMove = 'chocolate';
+    computerMove = 'strawberry';
+  } else if (move === 'strawberry') {
+    playerMove = 'strawberry';
+    computerMove = 'chocolate';
+  }
+
+  document.querySelectorAll('.cell')
+    .forEach((box) => {
+      box.addEventListener('click', () => {
+        const boxClicked = box.dataset.box;
+      });
+    });
 }
