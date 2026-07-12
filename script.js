@@ -1,59 +1,57 @@
+// game mode
 const computerMode = document.getElementById('computer-play');
 const friendMode = document.getElementById('friend-play');
 
 // html elements
-const startDiv = document.getElementById('start');
-const chooseMoveDiv = document.getElementById('choose-move');
-const tictactoeDiv = document.getElementById('tictactoe');
+const startPanel = document.getElementById('start-panel');
+const difficultyPanel = document.getElementById('difficulty-panel');
+const gamePanel = document.getElementById('game-panel');
 
-// pick Move (computer mode only)
-const chocolate = document.getElementById('chocolate-move');
-const strawberry = document.getElementById('strawberry-move');
+// selecting difficulty (computer mode only)
+const easyDiff = document.getElementById('easy');
+const mediumDiff = document.getElementById('medium');
+const hardDiff = document.getElementById('hard');
 
 // back button
 const backButton = document.getElementById('exit');
 
 backButton.addEventListener('click', () => {
-  tictactoeDiv.classList.add('hide');
-  startDiv.classList.remove('hide');
+  gamePanel.classList.add('hide');
+  startPanel.classList.remove('hide');
 });
 
 computerMode.addEventListener('click', () => {
-  showMoveOptions();
+  showDifficultyPanel();
 });
+
+// computer variables
+let difficultyLevel = '';
+
+document.querySelectorAll('.difficulty')
+  .forEach((difficultyButton) => {
+    difficultyButton.addEventListener('click', () => {
+      difficultyPanel.classList.add('hide');
+      gamePanel.classList.remove('hide');
+      
+      difficultyLevel = difficultyButton.dataset.difficultyId;
+      
+      playComputerMode(difficulty);
+    });
+  });
 
 friendMode.addEventListener('click', () => {
   playFriendMode();
 });
 
-function showMoveOptions() {
-  startDiv.classList.add('hide');
-  chooseMoveDiv.classList.remove('hide');
+function showDifficultyPanel() {
+  startPanel.classList.add('hide');
+  difficultyPanel.classList.remove('hide');
 }
 
-chocolate.addEventListener('click', () => {
-  playComputerMode('chocolate');
-});
-
-strawberry.addEventListener('click', () => {
-  playComputerMode('strawberry');
-});
-
 // computer mode
-function playComputerMode(move) {
-  chooseMoveDiv.classList.add('hide');
-  tictactoeDiv.classList.remove('hide');
-
-  let computerMove = '';
-  let playerMove = '';
-
-  if (move === 'chocolate') {
-    playerMove = 'chocolate';
-    computerMove = 'strawberry';
-  } else if (move === 'strawberry') {
-    playerMove = 'strawberry';
-    computerMove = 'chocolate';
-  }
+function playComputerMode(difficulty) {
+  showDifficultyPanel.classList.add('hide');
+  gamePanel.classList.remove('hide');
 
   document.querySelectorAll('.cell')
     .forEach((box) => {
