@@ -22,7 +22,7 @@ computerMode.addEventListener('click', () => {
 });
 
 // selecting difficulty
-let difficultyLevel = 1;
+let difficultyLevel = '';
 
 const easyDiff = document.getElementById('easy');
 const mediumDiff = document.getElementById('medium');
@@ -40,3 +40,51 @@ document.querySelectorAll('.difficulty')
       playComputerMode();
     });
   });
+
+// play computer mode
+function playComputerMode() {
+  turnIndicator.innerHTML = "Player's"
+
+  difficultyPanel.classList.add('hide');
+  gamePanel.classList.remove('hide');
+}
+
+// game indicator
+let boxTakenCount = 0;
+
+// turn indicator
+const turnIndicator = document.getElementById('turn');
+
+// turn flag
+let playersTurn = true;
+
+// player's move
+document.querySelectorAll('.box')
+  .forEach((box) => {
+    box.addEventListener('click', () => {
+      const boxId = box.dataset.box;
+
+      if (boxTakenCount < 9 && playersTurn) {
+        const boxClicked = boxes[boxId - 1];
+
+        if (boxClicked.taken === '') {
+          boxClicked.taken = 'player';
+          
+          playersTurn = false;
+          
+          document.querySelector(`.js-box-${boxId}`)
+            .innerHTML = 'x';
+
+          boxTakenCount++;
+        }
+
+        checkResult();
+        
+        if (!playersTurn && boxTakenCount <= 8) {
+          computerMove(difficultyLevel);
+        }
+      }
+    });
+  });
+
+
