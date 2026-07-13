@@ -41,6 +41,23 @@ document.querySelectorAll('.difficulty')
     });
   });
 
+// scores
+const score = {
+  x: 0,
+  tie: 0,
+  o: 5
+}
+
+const xWins = document.getElementById('x-wins');
+const tie = document.getElementById('tie');
+const oWins = document.getElementById('o-wins');
+
+function displayScore() {
+  xWins.innerHTML = score.x;
+  tie.innerHTML = score.tie;
+  oWins.innerHTML = score.o;
+}
+  
 // play computer mode
 function playComputerMode() {
   turnIndicator.innerHTML = "Player's"
