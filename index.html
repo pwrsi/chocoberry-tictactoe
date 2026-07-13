@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chocolate & Strawberry Tic-Tac-Toe</title>
+  <title>chocoberry tic-tac-toe ⋆˚࿔</title>
 
   <link rel="stylesheet" href="tempstyle.css">
 </head>
@@ -12,7 +12,7 @@
   <div class="outside-container">
     <div class="container">
 
-      <h1>xoxo tic-tac-toe</h1>
+      <h1>chocoberry tic-tac-toe</h1>
   
       <div id="start-panel" class="start-panel">
         <div class="buttons">
@@ -20,9 +20,6 @@
           <button id="friend-play">Play with a friend</button>
         </div>
   
-        <div class="note">
-          Note: The Play with a Friend option is intended for local play only. Players take turns on the same device.
-        </div>
       </div>
   
       <div id="difficulty-panel" class="difficulty-panel hide">
@@ -47,7 +44,7 @@
 
           <div>
             <p class="turn-indicator">
-              <span class="turn"></span> turn.
+              <span class="turn" id="turn"></span> turn.
             </p>
 
             <button id="restart-button" class="restart">Restart game</button>
@@ -55,20 +52,21 @@
         </div>
   
         <div class="game">
-          <div data-box="1" class="cell"></div>
-          <div data-box="2" class="cell"></div>
-          <div data-box="3" class="cell"></div>
-          <div data-box="4" class="cell"></div>
-          <div data-box="5" class="cell"></div>
-          <div data-box="6" class="cell"></div>
-          <div data-box="7" class="cell"></div>
-          <div data-box="8" class="cell"></div>
-          <div data-box="9" class="cell"></div>
+          <div data-box="1" class="box js-box-1"></div>
+          <div data-box="2" class="box js-box-2"></div>
+          <div data-box="3" class="box js-box-3"></div>
+          <div data-box="4" class="box js-box-4"></div>
+          <div data-box="5" class="box js-box-5"></div>
+          <div data-box="6" class="box js-box-6"></div>
+          <div data-box="7" class="box js-box-7"></div>
+          <div data-box="8" class="box js-box-8"></div>
+          <div data-box="9" class="box js-box-9"></div>
         </div>
 
         <div class="score-container">
-          <p>x: <span class="player-wins">0</span></p>
-          <p>o: <span class="computer-wins">0</span></p>
+          <p>x: <span id="x-wins">0</span></p>
+          <p>tie: <span id="tie">0</span></p>
+          <p>o: <span id="o-wins">0</span></p>
         </div>
       </div>
   
