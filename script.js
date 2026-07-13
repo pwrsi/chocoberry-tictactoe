@@ -87,4 +87,33 @@ document.querySelectorAll('.box')
     });
   });
 
+// computer's move
+function generateRandomNum() {
+  return Math.ceil(Math.random() * 9);
+}
+
+function computerMove(difficultyLevel) {
+  turnIndicator.innerHTML = "Computer's"
+
+  if (difficultyLevel == 1) {
+    let randomNum = generateRandomNum();
+
+    while (boxes[randomNum - 1].taken !== '') {
+      randomNum = generateRandomNum();
+    }
+
+    if (boxes[randomNum - 1].taken === '') {
+      boxes[randomNum - 1].taken = 'computer';
+
+      setTimeout(() => {
+        document.querySelector(`.js-box-${randomNum}`)
+          .innerHTML = 'o';
+
+          boxTakenCount++;
+          playersTurn = true;
+      }, 1000);
+    }
+  }
+}
+
 
