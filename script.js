@@ -21,6 +21,19 @@ computerMode.addEventListener('click', () => {
   difficultyPanel.classList.remove('hide');
 });
 
+// boxes statuses
+let boxes = [
+  {taken: ''}, 
+  {taken: ''}, 
+  {taken: ''}, 
+  {taken: ''}, 
+  {taken: ''}, 
+  {taken: ''}, 
+  {taken: ''}, 
+  {taken: ''}, 
+  {taken: ''}, 
+];
+
 // selecting difficulty
 let difficultyLevel = '';
 
@@ -133,4 +146,27 @@ function computerMove(difficultyLevel) {
   }
 }
 
+// game result
+let gameResult = '';
 
+function checkResult() {
+  const winPatterns = [
+    [1, 2, 3], [4, 5, 6], [7, 8, 9],
+    [1, 4, 7], [2, 5, 8], [3, 6, 9],
+    [1, 5, 9], [3, 5, 7]
+  ];
+
+  let winner = '';
+
+  if (winner === 'x') {
+    score.x++;
+    displayScore();
+  } else if (winner === 'o') {
+    score.o++;
+    displayScore();
+  }
+
+  if (boxTakenCount == 9) {
+    gameResult = 'tie';
+  }
+}
