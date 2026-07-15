@@ -58,7 +58,7 @@ document.querySelectorAll('.difficulty')
 const score = {
   x: 0,
   tie: 0,
-  o: 5
+  o: 0
 }
 
 const xWins = document.getElementById('x-wins');
@@ -66,6 +66,14 @@ const tie = document.getElementById('tie');
 const oWins = document.getElementById('o-wins');
 
 function displayScore() {
+  if (gameResult === 'player') {
+    score.x++;
+  } else if (gameResult === 'computer') {
+    score.o++;
+  } else if (gameResult === 'tie') {
+    score.tie++;
+  }
+
   xWins.innerHTML = score.x;
   tie.innerHTML = score.tie;
   oWins.innerHTML = score.o;
@@ -145,7 +153,6 @@ function computerMove(difficultyLevel) {
           checkResult('computer');
           turnIndicator.innerHTML = "Player's"
       }, 1000);
-      
     }
   }
 }
@@ -167,6 +174,7 @@ function checkResult(player) {
       console.log(arr);
       console.log('winner: ' + player);
       gameResult = player;
+      displayScore();
       disableGame();
       return;
     }
@@ -189,3 +197,5 @@ function disableGame() {
       box.removeEventListener('click', playerMove);
     });
 }
+
+displayScore();
