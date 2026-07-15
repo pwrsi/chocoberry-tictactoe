@@ -91,31 +91,32 @@ let playersTurn = true;
 // player's move
 document.querySelectorAll('.box')
   .forEach((box) => {
-    box.addEventListener('click', () => {
-      const boxId = box.dataset.box;
-
-      if (boxTakenCount < 9 && playersTurn) {
-        const boxClicked = boxes[boxId - 1];
-
-        if (boxClicked.taken === '') {
-          boxClicked.taken = 'player';
-          
-          playersTurn = false;
-          
-          document.querySelector(`.js-box-${boxId}`)
-            .innerHTML = 'x';
-
-          boxTakenCount++;
-        }
-
-        checkResult();
-        
-        if (!playersTurn && boxTakenCount <= 8) {
-          computerMove(difficultyLevel);
-        }
-      }
-    });
+    box.addEventListener('click', playerMove);
   });
+
+function playerMove(event) {
+  const box = event.currentTarget;
+  const boxId = box.dataset.box;
+
+  console.log(boxId);
+
+  if (boxTakenCount < 9 && playersTurn) {
+    const boxClicked = boxes[boxId - 1];
+
+    if (boxClicked.taken === '') {
+      boxClicked.taken = 'player';
+      
+      playersTurn = false;
+      
+      document.querySelector(`.js-box-${boxId}`)
+        .innerHTML = 'x';
+
+      boxTakenCount++;
+    }
+
+    checkResult('player');
+  }
+}
 
 // computer's move
 function generateRandomNum() {
@@ -141,6 +142,7 @@ function computerMove(difficultyLevel) {
 
           boxTakenCount++;
           playersTurn = true;
+          checkResult('computer');
       }, 1000);
     }
   }
@@ -149,21 +151,28 @@ function computerMove(difficultyLevel) {
 // game result
 let gameResult = '';
 
-function checkResult() {
+function checkResult(player) {
   const winPatterns = [
-    [1, 2, 3], [4, 5, 6], [7, 8, 9],
-    [1, 4, 7], [2, 5, 8], [3, 6, 9],
-    [1, 5, 9], [3, 5, 7]
+    [0, 1, 2], [3, 4, 5], [6, 7, 8],
+    [0, 3, 6], [1, 4, 7], [2, 5, 8],
+    [0, 4, 8], [2, 4, 6]
   ];
 
   let winner = '';
 
-  if (winner === 'x') {
-    score.x++;
-    displayScore();
-  } else if (winner === 'o') {
-    score.o++;
-    displayScore();
+  for (let i = 0; i < winPatterns.length; i++) {
+    const arr = winPatterns[i];
+
+    if (boxes[arr[0]].taken === player && boxes[arr[1]].taken === player && boxes[arr[2]].taken === player) {
+      console.log('winner: ' + player);
+      winner = player
+      disableGame();
+      return;
+    }
+  }
+
+  if (!playersTurn && boxTakenCount <= 8 && !winner) {
+    computerMove(difficultyLevel);
   }
 
   if (boxTakenCount == 9) {
