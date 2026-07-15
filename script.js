@@ -143,7 +143,9 @@ function computerMove(difficultyLevel) {
           boxTakenCount++;
           playersTurn = true;
           checkResult('computer');
+          turnIndicator.innerHTML = "Player's"
       }, 1000);
+      
     }
   }
 }
@@ -158,25 +160,26 @@ function checkResult(player) {
     [0, 4, 8], [2, 4, 6]
   ];
 
-  let winner = '';
-
   for (let i = 0; i < winPatterns.length; i++) {
     const arr = winPatterns[i];
 
     if (boxes[arr[0]].taken === player && boxes[arr[1]].taken === player && boxes[arr[2]].taken === player) {
+      console.log(arr);
       console.log('winner: ' + player);
-      winner = player
+      gameResult = player;
       disableGame();
       return;
     }
   }
 
-  if (!playersTurn && boxTakenCount <= 8 && !winner) {
+  if (!playersTurn && boxTakenCount <= 8 && !gameResult) {
     computerMove(difficultyLevel);
   }
 
+  console.log(boxTakenCount);
   if (boxTakenCount == 9) {
     gameResult = 'tie';
+    console.log(gameResult);
   }
 }
 
