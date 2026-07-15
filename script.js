@@ -13,6 +13,9 @@ const backButton = document.getElementById('exit');
 backButton.addEventListener('click', () => {
   gamePanel.classList.add('hide');
   startPanel.classList.remove('hide');
+
+  restartGame();
+  resetScore();
 });
 
 // ⏔⏔⏔ ꒰  computer mode ꒱ ⏔⏔⏔
@@ -31,7 +34,7 @@ let boxes = [
   {taken: ''}, 
   {taken: ''}, 
   {taken: ''}, 
-  {taken: ''}, 
+  {taken: ''}
 ];
 
 // selecting difficulty
@@ -66,12 +69,14 @@ const tie = document.getElementById('tie');
 const oWins = document.getElementById('o-wins');
 
 function displayScore() {
-  if (gameResult === 'player') {
-    score.x++;
-  } else if (gameResult === 'computer') {
-    score.o++;
-  } else if (gameResult === 'tie') {
-    score.tie++;
+  if (gameResult) {
+    if (gameResult === 'player') {
+      score.x++;
+    } else if (gameResult === 'computer') {
+      score.o++;
+    } else if (gameResult === 'tie') {
+      score.tie++;
+    }
   }
 
   xWins.innerHTML = score.x;
@@ -187,7 +192,7 @@ function checkResult(player) {
   console.log(boxTakenCount);
   if (boxTakenCount == 9) {
     gameResult = 'tie';
-    console.log(gameResult);
+    displayScore();
   }
 }
 
@@ -196,6 +201,48 @@ function disableGame() {
     .forEach((box) => {
       box.removeEventListener('click', playerMove);
     });
+}
+
+// restart game
+const restartButton = document.getElementById('restart-button');
+
+restartButton.addEventListener('click', restartGame);
+
+function restartGame() {
+  document.querySelectorAll('.box')
+    .forEach((box) => {
+      box.innerHTML = '';
+    });
+
+  boxes = [
+    {taken: ''}, 
+    {taken: ''}, 
+    {taken: ''}, 
+    {taken: ''}, 
+    {taken: ''}, 
+    {taken: ''}, 
+    {taken: ''}, 
+    {taken: ''}, 
+    {taken: ''}
+  ];
+
+  boxTakenCount = 0;
+  gameResult = '';
+
+  playersTurn = true;
+
+  document.querySelectorAll('.box')
+    .forEach((box) => {
+      box.addEventListener('click', playerMove);
+    });
+}
+
+function resetScore() {
+  score.x = 0;
+  score.tie = 0;
+  score.o = 0;
+
+  displayScore();
 }
 
 displayScore();
