@@ -179,3 +179,10 @@ function checkResult(player) {
     gameResult = 'tie';
   }
 }
+
+function disableGame() {
+  document.querySelectorAll('.box')
+    .forEach((box) => {
+      box.removeEventListener('click', playerMove);
+    });
+}
