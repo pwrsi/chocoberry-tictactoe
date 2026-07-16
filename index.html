@@ -12,17 +12,38 @@
   <div class="outside-container">
     <div class="container">
 
-      <h1>chocoberry tic-tac-toe</h1>
+      <h1 class="game-title">chocoberry<br>tic-tac-toe</h1>
   
-      <div id="start-panel" class="start-panel">
+      <div class="curves">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+
+      <div id="start-panel" class="start-panel panel hide">
         <div class="buttons">
-          <button id="computer-play">Play with a computer</button>
-          <button id="friend-play">Play with a friend</button>
+          <button id="computer-play">
+            Play with a computer
+          </button>
+          
+          <button id="friend-play">
+            Play with a friend
+          </button>
         </div>
   
       </div>
   
-      <div id="difficulty-panel" class="difficulty-panel hide">
+      <div id="difficulty-panel" class="difficulty-panel panel hide">
         <h1>Select difficulty</h1>
         <div class="buttons">
           <button data-difficulty-id="1" id="easy" class="difficulty">Easy</button>
@@ -31,23 +52,22 @@
         </div>
       </div>
   
-      <div id="game-panel" class="game-container hide">
+      <div id="game-panel" class="game-panel panel ">
         <div class="top">
-          <div>
+          <div class="buttons">
            <button id="exit"><</button>
             <select name="difficulty" id="difficulty">
               <option value="easy">Easy</option>
               <option value="medium">Medium</option>
               <option value="hard">Hard</option>
             </select>
+            <button id="restart-button" class="restart">Restart game</button>
           </div>
 
           <div>
             <p class="turn-indicator">
               <span class="turn" id="turn"></span> turn.
             </p>
-
-            <button id="restart-button" class="restart">Restart game</button>
           </div>
         </div>
   
@@ -65,14 +85,18 @@
 
         <div class="score-container">
           <p>x: <span id="x-wins">0</span></p>
+          <p>|</p>
           <p>tie: <span id="tie">0</span></p>
+          <p>|</p>
           <p>o: <span id="o-wins">0</span></p>
         </div>
       </div>
   
-      <a href="https://github.com/pwrsi" class="link">made by pwrsi 𐙚</a>
+      
     </div>
   </div>
+
+  <a href="https://github.com/pwrsi" class="link">made by pwrsi 𐙚</a>
 
   <script src="script.js"></script>
 </body>

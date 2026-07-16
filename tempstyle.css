@@ -1,18 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
-  font-family: 'Pixelify Sans';
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Sour Gummy";
+  color:#654B36
 }
 
-.hide {
-  display: none;
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url(background.png);
+  background-size: 600px;
+}
+
+.outside-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #654B36;
+  width: 350px;
+  padding: 20px;
+  border-radius: 36px;
+  position: relative;
+}
+
+.curves {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 80px;
+  left: 10px;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  margin-right: -5px;
+  background-color: #ffffff;
+  background-color: #654B36;
+  border-radius: 50%;
+}
+
+.container {
+  width: 100%;
+}
+
+h1.game-title {
+  color:#FCD8DA;
+  text-align: center;
+  line-height: 30px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  font-family: "Bagel Fat One";
+}
+
+.panel {
+  background-color: #FCD8DA;
+  width: 100%;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.start-panel .buttons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.start-panel .buttons button {
+  background-color: #6d533d;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  padding: 6px;
+  transition: 0.2s ease;
+  cursor: pointer;
+  width: 180px;
+}
+
+.start-panel .buttons button:hover {
+  background-color: #785d47;
+  transform: scale(0.95);
+}
+
+/* difficulty panel */
+.difficulty-panel h1 {
+  text-align: center;
+}
+
+.difficulty-panel .buttons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.difficulty-panel .buttons button {
+  background-color: #6d533d;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  padding: 10px;
+  transition: 0.2s ease;
+  cursor: pointer;
+  width: 80px;
+}
+
+.difficulty-panel .buttons button:hover {
+  background-color: #785d47;
+  transform: scale(0.95);
+}
+
+/* game panel */
+.game-panel {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-panel .top {
+  margin-top: 10px;
+}
+
+.game-panel .top .buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.top .buttons button, select {
+  background-color: #6d533d;
+  color: #fff;
+  padding: 10px;
+  transition: 0.2s ease;
+  text-align: center;
+}
+
+.top .buttons button:hover, select:hover {
+  background-color: #785d47
+}
+
+button#exit {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+}
+
+.restart {
+  height: 40px;
+  font-size: 1rem;
+  border-radius: 36px;
+  border: none;
+}
+
+select {
+  border-radius: 36px;
+  height: 40px;
+  font-size: 1rem;
+  border: none;
+}
+
+option {
+  color: #fff;
+}
+
+.turn-indicator {
+  font-size: 1.4rem;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .game {
   display: grid;
-  grid-template-columns: repeat(3, 50px);
-  grid-template-rows: repeat(3, 50px);
+  grid-template-columns: repeat(3, 90px);
+  grid-template-rows: repeat(3, 90px);
+  justify-content: center;
+  gap: 4px;
+  background-color: #654B36;
+  border-radius: 50px;
+  overflow: hidden;
+  border: 4px solid #6d533d;
 }
 
 .box {
-  border: 1px solid pink;
+  background-color: #785d47;
   cursor: pointer;
+  font-size: 5rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.box p {
+  color:#FCD8DA;
+  margin-top: -10px;
+}
+
+.score-container {
+  margin-top: 10px;
+  font-size: 1.4rem;
+  display: flex;
+  gap: 20px;
+}
+
+/* link */
+a.link {
+  position: absolute;
+  bottom: 0px;
+  text-decoration: none;
+  color: #49382a;
+  transition: 0.2s ease;
+}
+
+a.link:hover {
+  color:#704d4f;
+}
+
+.hide {
+  display: none;
 }
