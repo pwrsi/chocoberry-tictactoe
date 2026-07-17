@@ -57,6 +57,12 @@ document.querySelectorAll('.difficulty')
     });
   });
 
+const winPatterns = [
+  [0, 1, 2], [3, 4, 5], [6, 7, 8],
+  [0, 3, 6], [1, 4, 7], [2, 5, 8],
+  [0, 4, 8], [2, 4, 6]
+];
+  
 // scores
 const score = {
   x: 0,
@@ -111,8 +117,6 @@ function playerMove(event) {
   const box = event.currentTarget;
   const boxId = box.dataset.box;
 
-  console.log(boxId);
-
   if (boxTakenCount < 9 && playersTurn) {
     const boxClicked = boxes[boxId - 1];
 
@@ -122,7 +126,7 @@ function playerMove(event) {
       playersTurn = false;
       
       document.querySelector(`.js-box-${boxId}`)
-        .innerHTML = 'x';
+        .innerHTML = '<p>x</p>';
 
       boxTakenCount++;
     }
@@ -151,14 +155,31 @@ function computerMove(difficultyLevel) {
 
       setTimeout(() => {
         document.querySelector(`.js-box-${randomNum}`)
-          .innerHTML = 'o';
+          .innerHTML = '<p>o</p>';
 
           boxTakenCount++;
           playersTurn = true;
           checkResult('computer');
           turnIndicator.innerHTML = "Player's"
       }, 1000);
+
+      const computerMoves = [];
+    
+      for (let i = 0; i < boxes.length; i++) {
+        if (boxes[i].taken === 'computer') {
+          computerMoves.push(i);
+        }
+      }
+
+      console.log(computerMoves);
     }
+  } else if (difficultyLevel == 2) {
+    // check if computer can win
+    
+
+    // check if player can win
+  } else if (difficultyLevel == 3) {
+
   }
 }
 
@@ -166,18 +187,10 @@ function computerMove(difficultyLevel) {
 let gameResult = '';
 
 function checkResult(player) {
-  const winPatterns = [
-    [0, 1, 2], [3, 4, 5], [6, 7, 8],
-    [0, 3, 6], [1, 4, 7], [2, 5, 8],
-    [0, 4, 8], [2, 4, 6]
-  ];
-
   for (let i = 0; i < winPatterns.length; i++) {
     const arr = winPatterns[i];
 
     if (boxes[arr[0]].taken === player && boxes[arr[1]].taken === player && boxes[arr[2]].taken === player) {
-      console.log(arr);
-      console.log('winner: ' + player);
       gameResult = player;
       displayScore();
       disableGame();
@@ -189,7 +202,6 @@ function checkResult(player) {
     computerMove(difficultyLevel);
   }
 
-  console.log(boxTakenCount);
   if (boxTakenCount == 9) {
     gameResult = 'tie';
     displayScore();

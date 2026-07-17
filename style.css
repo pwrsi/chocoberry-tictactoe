@@ -15,8 +15,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url(background.png);
-  background-size: 600px;
+  background-color: #ffe7e8;
 }
 
 .outside-container {
@@ -25,7 +24,7 @@ body {
   align-items: center;
   background-color: #654B36;
   width: 350px;
-  padding: 20px;
+  padding: 20px 15px 15px 15px;
   border-radius: 36px;
   position: relative;
 }
@@ -65,7 +64,7 @@ h1.game-title {
   background-color: #FCD8DA;
   width: 100%;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 0 0 20px 20px;
 }
 
 .start-panel .buttons {
@@ -150,7 +149,8 @@ h1.game-title {
 }
 
 .top .buttons button:hover, select:hover {
-  background-color: #785d47
+  background-color: #785d47;
+  transform: scale(0.95);
 }
 
 button#exit {
