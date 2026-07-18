@@ -136,8 +136,14 @@ function playerMove(event) {
 }
 
 // computer's move
-function generateRandomNum() {
-  return Math.ceil(Math.random() * 9);
+function generateRandomMove() {
+  let randomNum = Math.ceil(Math.random() * 9);
+
+  while (boxes[randomNum - 1].taken !== '') {
+    randomNum = Math.ceil(Math.random() * 9);
+  }
+
+  displayComputerMove(randomNum);
 }
 
 function displayComputerMove(number) {
@@ -160,14 +166,8 @@ function computerMove(difficultyLevel) {
   turnIndicator.innerHTML = "Computer's turn."
 
   if (difficultyLevel == 1) {
-    let randomNum = generateRandomNum();
-
-    while (boxes[randomNum - 1].taken !== '') {
-      randomNum = generateRandomNum();
-    }
-
-    displayComputerMove(randomNum); 
-  }
+    generateRandomMove();
+  } 
 }
 
 // game result
