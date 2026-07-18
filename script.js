@@ -92,7 +92,7 @@ function displayScore() {
   
 // play computer mode
 function playComputerMode() {
-  turnIndicator.innerHTML = "Player's"
+  turnIndicator.innerHTML = "Player's turn"
 
   difficultyPanel.classList.add('hide');
   gamePanel.classList.remove('hide');
@@ -102,7 +102,7 @@ function playComputerMode() {
 let boxTakenCount = 0;
 
 // turn indicator
-const turnIndicator = document.getElementById('turn');
+const turnIndicator = document.getElementById('turn-indicator');
 
 // turn flag
 let playersTurn = true;
@@ -141,7 +141,7 @@ function generateRandomNum() {
 }
 
 function computerMove(difficultyLevel) {
-  turnIndicator.innerHTML = "Computer's"
+  turnIndicator.innerHTML = "Computer's turn."
 
   if (difficultyLevel == 1) {
     let randomNum = generateRandomNum();
@@ -156,30 +156,13 @@ function computerMove(difficultyLevel) {
       setTimeout(() => {
         document.querySelector(`.js-box-${randomNum}`)
           .innerHTML = '<p>o</p>';
-
+    
           boxTakenCount++;
           playersTurn = true;
           checkResult('computer');
-          turnIndicator.innerHTML = "Player's"
+          turnIndicator.innerHTML = "Player's turn"
       }, 1000);
-
-      const computerMoves = [];
-    
-      for (let i = 0; i < boxes.length; i++) {
-        if (boxes[i].taken === 'computer') {
-          computerMoves.push(i);
-        }
-      }
-
-      console.log(computerMoves);
     }
-  } else if (difficultyLevel == 2) {
-    // check if computer can win
-    
-
-    // check if player can win
-  } else if (difficultyLevel == 3) {
-
   }
 }
 
