@@ -140,6 +140,22 @@ function generateRandomNum() {
   return Math.ceil(Math.random() * 9);
 }
 
+function displayComputerMove(number) {
+  if (boxes[number - 1].taken === '') {
+    boxes[number - 1].taken = 'computer';
+
+    setTimeout(() => {
+      document.querySelector(`.js-box-${number}`)
+        .innerHTML = '<p>o</p>';
+  
+        boxTakenCount++;
+        playersTurn = true;
+        checkResult('computer');
+        turnIndicator.innerHTML = "Player's turn"
+    }, 1000);
+  }
+}
+
 function computerMove(difficultyLevel) {
   turnIndicator.innerHTML = "Computer's turn."
 
@@ -150,19 +166,7 @@ function computerMove(difficultyLevel) {
       randomNum = generateRandomNum();
     }
 
-    if (boxes[randomNum - 1].taken === '') {
-      boxes[randomNum - 1].taken = 'computer';
-
-      setTimeout(() => {
-        document.querySelector(`.js-box-${randomNum}`)
-          .innerHTML = '<p>o</p>';
-    
-          boxTakenCount++;
-          playersTurn = true;
-          checkResult('computer');
-          turnIndicator.innerHTML = "Player's turn"
-      }, 1000);
-    }
+    displayComputerMove(randomNum); 
   }
 }
 
