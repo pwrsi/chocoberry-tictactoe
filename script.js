@@ -167,7 +167,42 @@ function computerMove(difficultyLevel) {
 
   if (difficultyLevel == 1) {
     generateRandomMove();
-  } 
+  } else if (difficultyLevel == 2) {
+    for (let i = 0; i < winPatterns.length; i++) {
+      console.log('----- loop: ' + i);
+      const arr = winPatterns[i];
+
+      let emptyBox;
+      let computerCounter = 0;
+      let playerCounter = 0;
+      
+      for (let j = 0; j < arr.length; j++) {
+        if (boxes[arr[j]].taken === 'computer') {
+          console.log(arr[j] + ' -> computer');
+          computerCounter++;
+        } else if (boxes[arr[j]].taken === 'player') {
+          console.log(arr[j] + ' -> player');
+          playerCounter++;
+        } else if (boxes[arr[j]].taken === '') {
+          emptyBox = arr[j] + 1;
+          console.log(emptyBox + ' -> empty');
+        }
+      }
+
+      console.log(computerCounter)
+      console.log(playerCounter)
+
+      if (computerCounter == 2 && emptyBox) {
+        displayComputerMove(emptyBox);
+        return;
+      } else if (playerCounter == 2 && emptyBox) {
+        displayComputerMove(emptyBox);
+        return;
+      }
+    }
+    
+    generateRandomMove();
+  }
 }
 
 // game result
