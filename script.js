@@ -146,11 +146,13 @@ function generateRandomMove() {
   displayComputerMove(randomNum);
 }
 
+let timeoutId;
+
 function displayComputerMove(number) {
   if (boxes[number - 1].taken === '') {
     boxes[number - 1].taken = 'computer';
 
-    setTimeout(() => {
+    timeoutId = setTimeout(() => {
       document.querySelector(`.js-box-${number}`)
         .innerHTML = '<p>o</p>';
   
@@ -193,10 +195,9 @@ function computerMove(difficultyLevel) {
 
       if (computerCounter == 2 && emptyBox) {
         computerTarget = emptyBox;
-        console.log('oh shoot im about to win, i must place my move on box ' +  )
+        break;
       } else if (playerCounter == 2 && emptyBox) {
         playerTarget = emptyBox;
-        console
       }
     }
     
@@ -207,6 +208,8 @@ function computerMove(difficultyLevel) {
     } else {
       generateRandomMove();
     }
+  } else if (difficultyLevel == 3) {
+    console.log('hard difficulty')
   }
 }
 
@@ -274,6 +277,10 @@ function restartGame() {
     .forEach((box) => {
       box.addEventListener('click', playerMove);
     });
+
+  clearTimeout(timeoutId);
+
+  playComputerMode();
 }
 
 function resetScore() {
