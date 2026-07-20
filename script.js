@@ -168,8 +168,10 @@ function computerMove(difficultyLevel) {
   if (difficultyLevel == 1) {
     generateRandomMove();
   } else if (difficultyLevel == 2) {
+    let computerTarget;
+    let playerTarget;
+
     for (let i = 0; i < winPatterns.length; i++) {
-      console.log('----- loop: ' + i);
       const arr = winPatterns[i];
 
       let emptyBox;
@@ -189,19 +191,22 @@ function computerMove(difficultyLevel) {
         }
       }
 
-      console.log(computerCounter)
-      console.log(playerCounter)
-
       if (computerCounter == 2 && emptyBox) {
-        displayComputerMove(emptyBox);
-        return;
+        computerTarget = emptyBox;
+        console.log('oh shoot im about to win, i must place my move on box ' +  )
       } else if (playerCounter == 2 && emptyBox) {
-        displayComputerMove(emptyBox);
-        return;
+        playerTarget = emptyBox;
+        console
       }
     }
     
-    generateRandomMove();
+    if (computerTarget) {
+      displayComputerMove(computerTarget);
+    } else if (playerTarget) {
+      displayComputerMove(playerTarget);
+    } else {
+      generateRandomMove();
+    }
   }
 }
 
